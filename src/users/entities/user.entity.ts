@@ -4,12 +4,12 @@ import {
   Model,
   PrimaryKey,
   DataType,
-  ForeignKey,
+  HasMany,
 } from 'sequelize-typescript';
+import { Device } from '../../devices/entities/device.entity';
 
-import { User } from '../../users/entities/user.entity';
 @Table
-export class Device extends Model {
+export class User extends Model {
   @PrimaryKey
   @Column({
     type: DataType.UUID,
@@ -19,10 +19,9 @@ export class Device extends Model {
   @Column
   name: string;
   @Column
-  version: string;
-  @ForeignKey(() => User)
-  @Column({
-    type: DataType.UUID,
-  })
-  userId: string;
+  email: string;
+  @Column
+  password: string;
+  @HasMany(() => Device)
+  devices: Device[];
 }

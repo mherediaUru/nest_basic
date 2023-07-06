@@ -15,6 +15,7 @@ export class DevicesService {
     return this.devicesRepository.create<Device>({
       name: createDeviceDto.name,
       version: createDeviceDto.version,
+      userId: createDeviceDto.userId,
     });
   }
 
